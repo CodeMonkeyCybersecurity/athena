@@ -1,0 +1,34 @@
+ssh -oHostKeyAlgorithms=+ssh-dss root@192.168.8.109
+
+ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/router1_id_25519 -C “sscott@router1”
+	// -f file
+	// -C comment 
+	// 100 - 100 rounds 
+	// ed25519 this is the algo 
+
+ssh-copy-id -i ~/.ssh/router_id_25519 -p <port number> sscott@192.168.2.1
+
+ssh -p 7811 sscott@192.168.2.1
+
+ssh -i ~/.ssh/router1_id_25519 -p
+	
+sudo nano ~/.ssh/config 
+
+	Host router1
+	IdentityFile ~/.ssh/router1 id_25519
+	HostName 192. 168.2.1
+	User sscott
+	Port 7811
+	Identitiesonly yEs
+	Host *
+	AddKeysToAgent yes
+
+
+
+
+use one key per site 
+
+
+
+
+#####
