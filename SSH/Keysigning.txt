@@ -1,0 +1,20 @@
+In gitbash
+
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+
+# start the ssh-agent in the background
+Get-Service -Name ssh-agent | Set-Service -StartupType Manual
+Start-Service ssh-agent
+
+ssh-add c:/Users/YOU/.ssh/id_ed25519
+
+
+$ clip < ~/.ssh/id_ed25519.pub
+# Copies the contents of the id_ed25519.pub file to your clipboard
+
+$ git commit -S -m "YOUR_COMMIT_MESSAGE"
+# Creates a signed commit
+
+$ git push
+# Pushes your local commits to the remote repository
