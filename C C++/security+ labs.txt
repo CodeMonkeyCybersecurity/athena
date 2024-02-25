@@ -1,0 +1,33 @@
+Identifying Different Cyber Attacks
+Social Engineering Techniques and Exploits
+Identifying Indicators of a Network Attack
+Network Security Assessment Tools
+Implementing Secure Network Solutions
+Enterprise Network Security Configuration Concepts
+Physical Security Control Mechanisms
+Gathering Intelligence on Threat Actors and Vectors
+Determining Security Vulnerabilities
+Security Assessment Techniques
+Penetration Testing Techniques
+Authentication and Authorization Implementation Techniques
+Authentication and Authorization Solutions
+Implementing a Public Key Infrastructure
+Implementation of Secure Protocols
+Securing an Environment using Mitigating Techniques
+Cybersecurity Backup and Restore Strategies
+Identity and Account Management Mechanisms
+Identifying Different Application Exploits
+Application Hardening Deployment Techniques
+Application and Host Hardening Techniques
+Cyber Security Vulnerabilities of Embedded Systems
+Cloud and Virtualization Concepts
+Securing a Cloud Infrastructure
+Incident Response Policies and Procedures
+Incident Response Tools
+Implementing Wireless Security Configurations
+Mobile Security Solutions
+Cryptographic Basic Concepts
+Digital Data Forensic Techniques
+Control Mechanisms, Standards and Frameworks
+Organizational Risk Management and Policies
+Data Protection Implementation

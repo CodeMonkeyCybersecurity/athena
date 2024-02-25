@@ -1,0 +1,81 @@
+Last login: Wed Jan  4 10:39:41 on ttys000
+henrylouden@Henrys-MacBook-Pro ~ % --oem 1
+zsh: command not found: --oem
+henrylouden@Henrys-MacBook-Pro ~ % /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+==> Checking for `sudo` access (which may request your password)...
+Password:
+==> This script will install:
+/usr/local/bin/brew
+/usr/local/share/doc/homebrew
+/usr/local/share/man/man1/brew.1
+/usr/local/share/zsh/site-functions/_brew
+/usr/local/etc/bash_completion.d/brew
+/usr/local/Homebrew
+
+Press RETURN/ENTER to continue or any other key to abort:
+==> /usr/bin/sudo /usr/sbin/chown -R henrylouden:admin /usr/local/Homebrew
+==> /usr/bin/sudo /bin/mkdir -p /Users/henrylouden/Library/Caches/Homebrew
+==> /usr/bin/sudo /bin/chmod g+rwx /Users/henrylouden/Library/Caches/Homebrew
+==> /usr/bin/sudo /usr/sbin/chown -R henrylouden /Users/henrylouden/Library/Caches/Homebrew
+==> Downloading and installing Homebrew...
+remote: Enumerating objects: 819, done.
+remote: Counting objects: 100% (464/464), done.
+remote: Compressing objects: 100% (83/83), done.
+remote: Total 819 (delta 397), reused 436 (delta 378), pack-reused 355
+Receiving objects: 100% (819/819), 339.84 KiB | 468.00 KiB/s, done.
+Resolving deltas: 100% (563/563), completed with 104 local objects.
+From https://github.com/Homebrew/brew
+ * [new branch]          dependabot/bundler/Library/Homebrew/parser-3.2.0.0 -> origin/dependabot/bundler/Library/Homebrew/parser-3.2.0.0
+ * [new branch]          dependabot/bundler/Library/Homebrew/unicode-display_width-2.4.0 -> origin/dependabot/bundler/Library/Homebrew/unicode-display_width-2.4.0
+   895d32212..a81710542  master     -> origin/master
+ * [new tag]             3.6.17     -> 3.6.17
+Updating files: 100% (3213/3213), done.
+HEAD is now at a81710542 Merge pull request #14324 from Rylan12/flight-blocks-cask-api
+Updated 1 tap (homebrew/core).
+Error: Failed to link all completions, docs and manpages:
+  Permission denied @ rb_file_s_symlink - (../../../Homebrew/completions/zsh/_brew, /usr/local/share/zsh/site-functions/_brew)
+Failed during: /usr/local/bin/brew update --force --quiet
+henrylouden@Henrys-MacBook-Pro ~ % /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+==> Checking for `sudo` access (which may request your password)...
+Password:
+==> This script will install:
+/usr/local/bin/brew
+/usr/local/share/doc/homebrew
+/usr/local/share/man/man1/brew.1
+/usr/local/share/zsh/site-functions/_brew
+/usr/local/etc/bash_completion.d/brew
+/usr/local/Homebrew
+
+Press RETURN/ENTER to continue or any other key to abort:
+==> /usr/bin/sudo /usr/sbin/chown -R henrylouden:admin /usr/local/Homebrew
+==> Downloading and installing Homebrew...
+Updating files: 100% (2955/2955), done.
+HEAD is now at a81710542 Merge pull request #14324 from Rylan12/flight-blocks-cask-api
+Error: Failed to link all completions, docs and manpages:
+  Permission denied @ rb_file_s_symlink - (../../../Homebrew/completions/zsh/_brew, /usr/local/share/zsh/site-functions/_brew)
+Failed during: /usr/local/bin/brew update --force --quiet
+henrylouden@Henrys-MacBook-Pro ~ % sudo chown -R "$USER":admin /usr/local
+Password:
+chown: /usr/local: Operation not permitted
+henrylouden@Henrys-MacBook-Pro ~ % sudo chown -R "$USER":admin /Library/Caches/Homebrew
+chown: /Library/Caches/Homebrew: No such file or directory
+henrylouden@Henrys-MacBook-Pro ~ % sudo chown -R "$USER":admin /usr/local
+chown: /usr/local: Operation not permitted
+henrylouden@Henrys-MacBook-Pro ~ % sudo chown -R $USER:admin /usr/local
+chown: /Users/henrylouden/henryloudendmin: illegal user name
+henrylouden@Henrys-MacBook-Pro ~ % sudo chown -R $USER:henrylouden /usr/local
+chown: .enrylouden: illegal user name
+henrylouden@Henrys-MacBook-Pro ~ % sudo chown -R $USER: henrylouden@Henrys-MacBook-Pro /usr/local
+
+chown: henrylouden@Henrys-MacBook-Pro: No such file or directory
+chown: /usr/local: Operation not permitted
+henrylouden@Henrys-MacBook-Pro ~ % bash                          
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+bash-3.2$ chsh -s /bin/bash
+Changing shell for henrylouden.
+Password for henrylouden: 
+bash-3.2$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
