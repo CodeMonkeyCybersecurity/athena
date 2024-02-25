@@ -1,0 +1,42 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 UbuntuMono-Regular;\f1\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\csgray\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww20900\viewh8120\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 \CocoaLigature0 Firewalls
+\f1\fs24 \cf0 \CocoaLigature1 \
+
+\f0\fs28 \cf2 \CocoaLigature0 \
+rules status \
+	% sudo pfctl -s rules\
+	\
+	inbound\
+	> netsh advfirewall firewall show rule name=all dir=in\
+\
+	outbound\
+	> netsh advfirewall firewall show rule name=all dir=out\
+\
+	filtering \
+	> netsh advfirewall firewall show rule name="RuleName" dir=in\
+\
+\
+\
+	new inbound rule\
+	> netsh advfirewall firewall add rule name="RuleName" dir=in program="PathToProgram" action=allow\
+	eg. > netsh advfirewall firewall add rule name="Allow Notepad" dir=in program="%SystemRoot%\\System32\\notepad.exe" action=allow\
+\
+	new inbound port rule \
+	> netsh advfirewall firewall add rule name="RuleName" dir=in protocol=TCP localport=PortNumber action=allow\
+	eg. > netsh advfirewall firewall add rule name="Allow Port 80" dir=in protocol=TCP localport=80 action=allow\
+	\
+	new outbound rule \
+	> netsh advfirewall firewall add rule name="RuleName" dir=out program="PathToProgram" action=allow\
+\
+	new outbound port rule\
+	> netsh advfirewall firewall add rule name="RuleName" dir=out protocol=TCP remoteport=PortNumber action=allow\
+\
+\
+status\
+	% sudo pfctl -s info | grep Status}

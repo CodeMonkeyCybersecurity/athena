@@ -1,0 +1,49 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2639
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 $DestinationDir = "C:\\Temp"\
+$LogFile = "C:\\Temp\\GoogleChromeDeploymentLog.log"\
+$TmpOb = New-Object System.Net.WebClient\
+$ERRORVal = $false\
+$currentVer=$null\
+$Detection-$false\
+$LatestVer = ((((Invoke-WebRequest -uri "https://omahaproxy.appspot.com/all.json" -UseBasicParsing).Content | ConvertFrom-Json) | Where-Object \{ $_.os -eq "win64" \}).versions | `Where-Object \{ $_.channel -eq "Stable" \}).current_version\
+function Chrome\{\
+param ([string]$maintenance)\
+try\{\
+try\{\
+$FileChk=(Get-Item $DestinationDir+'\\googlechromestandaloneenterprise64.msi' -ErrorAction Stop).Exists\
+if($fileChk)\{(Get-Item $DestinationDir+'\\googlechromestandaloneenterprise64.msi').Delete()\}\
+\}catch [Exception]\{\}\
+$TmpOb.DownloadFile("https://dl.google.com/tag/s/dl/chrome/install/googlechromestandaloneenterprise64.msi",$DestinationDir+'\\googlechromestandaloneenterprise64.msi')\
+Write-Host "Download successful: "(Get-Date) | Out-File -FilePath $LogFile -Append\
+\}catch [Exception]\{\
+$ERRORVal = $true\
+Write-Host "An error occurred during download: "(Get-Date) | Out-File -FilePath $LogFile -Append\
+$_.Exception | Format-List -force | Out-File -FilePath $LogFile -Append\}\
+if(!$ERRORVal)\{\
+try\{\
+Write-Host "Initiating "$maintenance ":"(Get-Date) | Out-File -FilePath $LogFile -Append\
+$PObj = (Start-Process msiexec.exe -ArgumentList "/i $DestinationDir\\googlechromestandaloneenterprise64.msi ALLUSERS=1 NOGOOGLEUPDATEPING=1 /qn /liewa+ $LogFile" -Wait -Passthru).ExitCode\
+\}catch [exception]\{\}\
+\}\
+\}\
+if (!(Test-path $destinationdir))\{\
+new-item -ItemType directory -Path C:\\ -Name temp\
+\}\
+if (Get-Item $LogFile -ErrorAction Ignore)\{\
+(Get-Item $LogFile).Delete()\
+\}\
+New-item -ItemType File -Path C:\\Temp -Name GoogleChromeDeploymentLog.log\
+try\{\
+$Detection = ($null -ne (Get-ItemProperty "HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\chrome.exe" -ErrorAction Stop))\
+$currentVer=((Get-Item (Get-ItemProperty 'HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App Paths\\chrome.exe' -ErrorAction Stop).'(Default)').VersionInfo | Select-Object ProductVersion).ProductVersion\
+Write-Host "Detected existing installation with product version:"$currentVer" "(Get-Date) | Out-File -FilePath $LogFile -Append\
+\}catch [Exception]\{\
+Write-Host "An existing Google Chrome installation not identified on the System & proceeding to installation...: "(Get-Date) | Out-File -FilePath $LogFile -Append\
+chrome\
+\}}

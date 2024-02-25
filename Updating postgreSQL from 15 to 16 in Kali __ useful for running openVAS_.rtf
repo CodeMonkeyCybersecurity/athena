@@ -1,0 +1,54 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 UbuntuMono-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Updating postgreSQL from 15 to 16 in Kali // useful for running openVAS\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 pg_upgradecluster 15 main\
+\
+service postgresql@15-main stop\
+service postgresql@16-main start\
+\
+pg_lsclusters\
+\
+Sudo nano /etc/postgresql/15/main/postgresql.conf\
+\
+Port = 5432 changed to 5434 // needs to be restarted after changing port config \
+\
+Sudo service postgresql@16-main stop\
+Sudo service postgresql@15-main start\
+\
+pg_lscluster to check // 15 running over 5434, 16 now stopped but over 5433\
+\
+Sudo nano /etc/postgresql/16/main/postgresql.conf //to change port to 5432\
+\
+service postgresql@15-main stop\
+service postgresql@16-main start // to restart 16 again, should now be listening over the correct port \
+\
+pg_lscluster // 16 should now be running over the correct port\
+\
+Sudo Gvm-setup // bobs your fucking grandma\
+Gvm-check-setup\
+\
+Https://127.0.0.1:9392\
+\
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+\cf0 Migrating database\
+[>] Checking for GVM admin user [*] Creating user admin for gm\
+[*] Please note the generated admin password\
+[*] User created with password 43506fbe-d23-450-bf18-cd79288445f'\
+[*] Configure Feed Import Owner\
+[*] Define Feed Import Owner\
+[*]\
+Update GVM feeds\
+Running as root. Switching to user _gvm' and group "_gvm.\
+Trying to acquire lock on /var/Lib/openvas/feed-update.Lock\
+Acquired lock on /var/lib/openvas/feed-update.lock\
+Downloading Notus files\
+from\
+rsync://feed. community-greenbone.net/community/vulnerability-feed/22.04/vt-data/notus/\cf2 \
+}

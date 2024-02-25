@@ -1,0 +1,85 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fnil\fcharset0 UbuntuMono-Regular;\f2\froman\fcharset0 Times-Roman;
+\f3\fnil\fcharset0 .SFNS-Regular_wdth_opsz180000_GRAD_wght1F40000;\f4\fnil\fcharset0 HelveticaNeue-Italic;\f5\fnil\fcharset0 .SFNS-Regular_wdth_opsz150000_GRAD_wght1F40000;
+}
+{\colortbl;\red255\green255\blue255;\red25\green28\blue31;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c12941\c14510\c16078;\cssrgb\c100000\c100000\c100000;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 The OVA file is nothing more than a TAR archive, containing the .OVF and .VMDK files. Easy!\
+Using Evergreen ILS for example:\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs21 \cf2 ~ $ file Evergreen_trunk_Squeeze.ova\
+Evergreen_trunk_Squeeze.ova:                POSIX tar archive (GNU)
+\f2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 I'ts possible to use the tar command to list the contents\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs21 \cf2 ~ $ tar -tf Evergreen_trunk_Squeeze.ova \
+Evergreen_trunk_Squeeze.ovf\
+Evergreen_trunk_Squeeze-disk1.vmdk
+\f2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 Simply extract those things...\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs21 \cf2 ~ $ tar -xvf Evergreen_trunk_Squeeze.ova\
+Evergreen_trunk_Squeeze.ovf\
+Evergreen_trunk_Squeeze-disk1.vmdk
+\f2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 Now take a look at the created files The OVF XML file describes the image, it makes for some interesting reading about the expectations of the running environment.\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs21 \cf2 ~ $ file Evergreen_trunk_Squeeze*\
+Evergreen_trunk_Squeeze-disk1.vmdk: VMware4 disk image\
+Evergreen_trunk_Squeeze.ova:        POSIX tar archive (GNU)\
+Evergreen_trunk_Squeeze.ovf:        XML document text
+\f2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 Recent versions of\'a0
+\fs31\fsmilli15750 qemu
+\fs36 \'a0are able to run directly from the VMDK file, buy why do that? Use QCOW2, it's better. Execute:\'a0
+\fs31\fsmilli15750 qemu-img -h
+\fs36 \'a0and the last line of output shows the supported formats.\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs21 \cf2 ~ $ qemu-img -h |tail -n1\
+Supported formats: raw cow qcow vdi vmdk cloop dmg bochs vpc vvfat qcow2 parallels nbd blkdebug sheepdog host_cdrom host_floppy host_device file\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 Now actually convert it, this may take some time.\
+\pard\pardeftab720\partightenfactor0
+
+\f2\fs21 \cf2 ~ $ qemu-img convert -O qcow2 Evergreen_trunk_Squeeze-disk1.vmdk Evergreen_trunk_Squeeze.qcow2\
+\pard\pardeftab720\sa120\partightenfactor0
+
+\f3\fs48 \cf2 Contents of OVF Files\
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs36 \cf2 The OVA is intended to run an\'a0
+\f4\i Appliance
+\f0\i0 \'a0and this OVF file describes the appliance. Examine the contents of this file to determine information about the expected CPU, Memory and other appliance details. These will be important to getting the image to run under KVM. Noteably, Windows has a terrible time moving, ensure you have the MergeIDE fix in place.\
+\pard\pardeftab720\sa120\partightenfactor0
+
+\f5\fs42 \cf2 See Also\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f0\fs41\fsmilli20800 \cf2 \kerning1\expnd0\expndtw0 \outl0\strokewidth0 {\listtext	\uc0\u8226 	}{\field{\*\fldinst{HYPERLINK "http://www.boche.net/blog/index.php/2010/07/02/ovf-ova-wtf/"}}{\fldrslt \expnd0\expndtw0\kerning0
+\ul \outl0\strokewidth0 \strokec2 OVF, OVA, WTF!?}}\cb1 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 \
+\pard\pardeftab720\sa240\partightenfactor0
+
+\fs36 \cf2 \cb3 Last Modified: 2020-05-24\
+}

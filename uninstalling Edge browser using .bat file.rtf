@@ -1,0 +1,61 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2758
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 UbuntuMono-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww13440\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs28 \cf2 4. Press Enter\'c2\'a0and\'c2\'a0Edge will instantly be uninstalled from Windows 10, without you needing to restart your PC.\'c2\'a0\
+The browser's shortcut icon will disappear from your taskbar, though you may still see an Edge entry in the Start menu. However, this won\'e2\'80\'99t do anything when clicked.\'c2\'a0\
+How to uninstall Microsoft Edge: Stop Edge reinstalling\'c2\'a0\
+Even after you\'e2\'80\'99ve successfully uninstalled Microsoft Edge, there\'e2\'80\'99s still a chance it could come back when you install future Windows updates. You can stop this happening using a simple registry tweak.\
+1. Type "regedit"\'c2\'a0in the Windows search box and\'c2\'a0click \'e2\'80\'9cRun as administrator\'e2\'80\uc0\u157 \'c2\'a0next to Registry Editor. \'c2\'a0\
+2.\'c2\'a0When the Registry Editor opens,\'c2\'a0navigate to the following key, or just copy and paste it into the Registry Editor address bar:\
+HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\
+3. Right-click the Microsoft folder, and\'c2\'a0select New, then Key.\'c2\'a0Name the key \'e2\'80\'9cEdgeUpdate\'e2\'80\uc0\u157 \'c2\'a0and then right-click it.\'c2\'a0Select New, then \'e2\'80\'9cDWORD (32-bit) Value\'e2\'80\u157 \'c2\'a0and\'c2\'a0call it \'e2\'80\'9cDoNotUpdateToEdgeWithChromium.\'e2\'80\u157 \'c2\'a0\
+\
+	\'95	\
+	\'95	\'95	HKEY_LOCAL_MACHINE\\SYSTEM :\'a0\\system32\\config\\system\
+	\'95	HKEY_LOCAL_MACHINE\\SAM :\'a0\\system32\\config\\sam\
+	\'95	HKEY_LOCAL_MACHINE\\SECURITY :\'a0\\system32\\config\\security\
+	\'95	HKEY_LOCAL_MACHINE\\SOFTWARE :\'a0\\system32\\config\\software\
+	\'95	HKEY_USERS\\UserProfile :\'a0\'a0\\winnt\\profiles\\username\
+	\'95	HKEY_USERS.DEFAULT :\'a0\\system32\\config\\default\
+\
+\
+Parameter\
+Description\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-add"}}{\fldrslt reg add}}\
+Adds a new subkey or entry to the registry.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-compare"}}{\fldrslt reg compare}}\
+Compares specified registry subkeys or entries.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-copy"}}{\fldrslt reg copy}}\
+Copies a registry entry to a specified location on the local or remote computer.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-delete"}}{\fldrslt reg delete}}\
+Deletes a subkey or entries from the registry.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-export"}}{\fldrslt reg export}}\
+Copies the specified subkeys, entries, and values of the local computer into a file for transfer to other servers.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-import"}}{\fldrslt reg import}}\
+Copies the contents of a file that contains exported registry subkeys, entries, and values into the registry of the local computer.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-load"}}{\fldrslt reg load}}\
+Writes saved subkeys and entries into a different subkey in the registry.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-query"}}{\fldrslt reg query}}\
+Returns a list of the next tier of subkeys and entries that are located under a specified subkey in the registry.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-restore"}}{\fldrslt reg restore}}\
+Writes saved subkeys and entries back to the registry.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-save"}}{\fldrslt reg save}}\
+Saves a copy of specified subkeys, entries, and values of the registry in a specified file.\
+{\field{\*\fldinst{HYPERLINK "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/reg-unload"}}{\fldrslt reg unload}}\
+Removes a section of the registry that was loaded using the\'a0reg load\'a0operation.\
+\
+\
+\
+Yes, you can use the\'a0regedit\'a0command in a .bat file. However, it is not recommended to use\'a0regedit\'a0in a batch file because it opens the Registry Editor, which is a graphical user interface application.\'a0{\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/13809856/run-reg-command-in-cmd-bat-file"}}{\fldrslt Instead, you should use the\'a0reg\'a0command, which is a command-line tool that allows you to add, modify, and delete registry keys and values1}}{\field{\*\fldinst{HYPERLINK "https://superuser.com/questions/991178/how-to-add-reg-key-from-batch-file"}}{\fldrslt 2}}{\field{\*\fldinst{HYPERLINK "https://stackoverflow.com/questions/137182/how-to-launch-windows-regedit-with-certain-path"}}{\fldrslt 3}}.\
+Here is an example of how to use the\'a0reg\'a0command to add a registry key in a batch file:\
+reg add HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v MyApplication /t REG_SZ /d "C:\\MyApplication.exe" /f\
+\
+This command adds a registry key named\'a0MyApplication\'a0to the\'a0HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\'a0key with a value of\'a0C:\\MyApplication.exe.\
+I hope that helps! Let me know if you have any other questions.\
+\
+\
+}
