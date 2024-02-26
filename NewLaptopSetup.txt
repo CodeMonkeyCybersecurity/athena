@@ -1,0 +1,95 @@
+
+Lenovo thinkpad T14 G3 
+- F12 or fnF12 to enter bios  
+- make sure FnLock is on 
+
+
+DELL
+- F2 into bios 
+- sometimes ESC
+
+
+shift + f10 to enter cmd.exe
+
+oobe\bypassnro
+oobe (without parameters): Initiates the standard Out of Box Experience.
+oobe\bypass: Skips the OOBE process, and the system starts directly to the desktop.
+oobe\generalize: Prepares the system for imaging.
+oobe\reboot: Restarts the computer during the OOBE process.
+oobe\shutdown: Shuts down the computer during the OOBE process.
+oobe\unattend: Applies an unattended answer file during the OOBE process.
+oobe\user: Displays the user creation page during the OOBE process.
+oobe\disableautopoweroff: Disables automatic power-off after the OOBE process.
+
+
+How to Bypass Windows 11's TPM, CPU and RAM Requirements
+How-to
+By Avram Piltch, Les Pounder published July 18, 2022
+Use simple utilities to install Windows 11 on any PC.
+
+ 
+ 
+ 
+ 
+ 
+ Comments (75)
+Bypass Windows 11 TPM
+(Image credit: Tom's Hardware)
+Microsoft has some strict hardware requirements that your PC must meet to install Windows 11, including TPM 2.0 support. This means that not only older computers, but virtual machines will refuse to upgrade from Windows 10, giving you a message that "this PC doesn't currently meet Windows 11 system requirements." 
+
+Fortunately, there are several simple ways you can get bypass Windows 11's TPM, RAM and other requirements. If you're doing a clean install with a Windows 11 ISO, you can edit the registry in the middle of the setup process and tell it to skip requirement checks. We'll show you how to modify the registry in the first section below.
+
+If you don't want to have to modify the registry mid-install, you can create a Windows 11 USB install disk that will bypass Windows 11's TPM requirement, and its need for 8GB of RAM and a supported CPU. Using a free tool called Rufus and at least a 16GB Flash drive, you can either perform an in-place upgrade of Windows 10 to 11 or a Windows 11 clean install while getting around these minimums. In the second section of our tutorial below, we'll show you how to use Rufus to create a requirement-free Windows 11 install disc.
+
+If you have Windows 10 or an earlier build of Windows 11 installed on a PC that didn't meet the requirements (perhaps a VM), you try to update to a new build with Windows Update and you get the "doesn't meet requirements" error message, there's a workaround for that. As we'll detail in the third section below, a script from AveYo's Media Creation tool github page will allow you to bypass Windows 11's TPM requirement even with Windows Update. 
+
+RECOMMENDED VIDEOS FOR YOU...
+CLOSE
+Note that Microsoft also has also created an official registry hack to bypass TPM 2.0 and CPU requirements for an in-place upgrade. However, this method still requires at least TPM 1.2 so, if you have no TPM at all, it's worthless. We'll talk about this at the bottom, in case you want to try it.
+
+Also note that, by default, Microsoft's OS wants you to set it up with a Microsoft account. However, we have another tutorial on how to install Windows 11 without a Microsoft Account by using a few tricks.
+
+Bypass Windows 11 TPM
+
+(Image credit: Tom's Hardware)
+How to Bypass Windows 11's TPM Requirement Using Registry Hacks
+If you just have a regular Windows 11 install disk or ISO, you can bypass the Windows TPM and RAM requirements by making some registry changes during the install.  Note that this method only works on a clean install and does not allow you to bypass the requirement for at least a dual-core CPU. 
+
+1. Boot off of your Windows 11 install disk. If you don't have one, see our story on how to download Windows 11. The first screen should ask you to choose the language of your install (which will probably be correct).
+
+Windows 11 installer
+
+(Image credit: Tom's Hardware)
+2. Hit SHIFT + F10 to launch the command prompt. 
+
+command prompt in Windows 11 installer
+
+(Image credit: Tom's Hardware)
+3. Type regedit and hit Enter to launch registry editor.
+
+launch regedit
+
+(Image credit: Tom's Hardware)
+4. Navigate to HKEY_LOCAL_MACHINE\SYSTEM\Setup. 
+
+Navigate to the hkey_local_machine system setup key
+
+(Image credit: Tom's Hardware)
+5. Create a new registry key under Setup and name it LabConfig. To create a registry key, right click in the right window pane and select New->Key. Then enter the key name.
+
+Create a registry key called LabConfig
+
+(Image credit: Tom's Hardware)
+6. Within  LabConfig, create DWORDs values called BypassTPMCheck and BypassSecureBootCheck and set each to 1. To create a new DWORD value, right click in the right window and select new DWORD (32-bit) Value then name the key, double click to open it and set it to 1. 
+
+Create DWORD values
+
+(Image credit: Tom's Hardware)
+If you also want to bypass the RAM requirement, add a DWORD values for BypassRAMCheck.
+
+7. Close regedit and the command prompt.
+
+You should be able to continue with your Windows 11 installation as normal.
+
+
+https://www.tomshardware.com/how-to/bypass-windows-11-tpm-requirement

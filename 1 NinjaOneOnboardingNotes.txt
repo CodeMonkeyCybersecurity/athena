@@ -1,0 +1,75 @@
+////// NinjaOne
+> oc.ninjarmm.com
+> login
+add 
+organisation 
+name (business or person)
+alert - custom Mon - Fri 8-5
+system tray - on 
+save
+
+Devices 
+- security manually approve 
+
+location 
+- address home / work 
+
+NinjaRemote 
+> enable 
+> select node role 
+
+> advanced
+	>display name -> company name -> technical and compnay name 
+
+> ask for end user confirmation before allowing access
+
+Splashtop 
+> manage 
+	enable 
+
+Contacts 
+> excel 
+	> First | Last | Email
+	> copy & paste into add new contact box 
+
+
+
+Dashboard -> Administration -> reporting 
+	edit schedule 
+	copy report 
+	create new copy 
+	save 	
+	change to new clients details from old clients copy 
+		email, reports > organisation, schedule > description (delete) and > schedule name 
+
+
+
+Create an installer 
+	> Add a computer (follow the prompts)
+
+
+/////////// ADD TO SPREADSHEET
+Excel 
+	"clients on maintenance packages"
+	fill in details 
+	computer name: FIRSLAST01
+
+	trafft - enter 'YES' once done 
+
+/////////// PRICING 
+
+29
+
+
+
+
+On call with person 
+	get them to click executable 
+	need to restart 
+
+
+//// Splashtop 
+
+
+
+

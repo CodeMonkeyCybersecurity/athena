@@ -1,0 +1,49 @@
+MSP360 
+
+add license 
+	buy 
+	desktop license 
+	
+
+organisations 
+	add 
+	company
+	> details 
+	create 
+
+allowed license 
+	select desktop only 
+	appropriate pool 
+
+
+add backup destination 
+	create 
+	add account 
+	file system
+	\\COMPUTER01\Backups
+	no credentials 
+
+assign drive to company 
+	organisatiotn 
+		add backup destination 
+
+add user 
+users 
+	create user 
+	> details 
+	dont send instructions to user
+	> save this in password manager ++
+
+download softawre -> copy install link 
+-> copy and paste into clients browser 
+
+
+
+on RMM
+	backup image, dont use legacy mode 
+	dont use VSS // this will mean it ignores outlook 
+	enable encryption 
+
+
+
+dont purge 

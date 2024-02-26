@@ -1,0 +1,28 @@
+XERO SET UP DIRECT DEBIT
+
+sales overview
+	invoices 
+		> business
+		> repeating 
+		> new repeating invocie 
+
+			> new repeating invocie 
+				online payments -> change to gocardless-direct debit 
+				branding -> go cardless
+	
+				> items 
+					device agreements 
+					support agreements 
+					maintenance 1/2/3 //// put peoples names in the descriptions here 
+					bitdefender 
+					etc
+		
+
+Add contact
+
+Organise time for maintenance schedule 
+
+Email the person direct debit link
+	> "pay now"
+	> redirects to website 
+	> 

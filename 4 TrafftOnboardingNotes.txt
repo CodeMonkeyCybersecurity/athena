@@ -1,0 +1,8 @@
+Add customer
+	> enter details 
+	 
+
+Add appointment 
+	add new 
+		computer maintenance 
+			date time // interfaces with outlook 

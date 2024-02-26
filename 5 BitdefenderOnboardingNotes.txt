@@ -1,0 +1,31 @@
+remove previous 
+
+
+gravityzone.BitDefender.com
+
+Add company 
+	>
+
+turn on all addons 
+	EDR 
+	sandbox 
+
+create customer installation packages 
+	turn on all 
+	not device control not poweruser 
+
+	set uninstall password 
+	
+create new policy 
+	clone from previous policy 
+
+apply policy 
+
+	netowrk -> assign policy  -> ->force to all computers 
+
+
+get installed 
+	install packages 
+	send download links 
+	copy windows installer 
+	email 
