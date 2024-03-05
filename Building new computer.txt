@@ -1,0 +1,19 @@
+Building new compiuter 
+
+
+Enable XMP (memory)
+Enable resizable BAR (graphics card more performance)
+Disable VMD (storage)
+
+getting drives 
+    goiogle exact model 
+        if wifi and BT is intel - can use Intel DSA 
+        Under chipset driver 
+            chipset 
+            MEI
+            dynamic tuning driver
+            serial IO
+            GNA 
+    BIOS 
+        actual BIOS
+        if available get intel ME update tool 
