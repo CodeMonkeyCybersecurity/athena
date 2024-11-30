@@ -1,5 +1,6 @@
 Thanks to: https://github.com/Scribery/tlog.
-Terminal I/O logger
+
+Terminal I/O logger.
 
 Here’s a step-by-step guide to set up tlog for capturing terminal commands and output:
 
