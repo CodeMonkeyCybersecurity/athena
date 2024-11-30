@@ -7,8 +7,8 @@ Step 1: Install tlog
 
 	1.	Install the tlog package:
 
-sudo apt update
-sudo apt install tlog
+```sudo apt update
+```sudo apt install tlog
 
 
 	2.	Confirm the installation:
