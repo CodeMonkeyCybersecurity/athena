@@ -12,31 +12,31 @@ sudo apt update
 sudo apt install tlog
 ```
 
-	2.	Confirm the installation:
-
+Confirm the installation:
+```
 tlog-rec-session --version
-
+```
 This should display the installed version of tlog.
 
 Step 2: Configure tlog
 
 tlog integrates with PAM or can be set as the default shell for specific users. Choose the method that suits your needs:
 
-Option 1: Configure PAM for Session Recording
+### Option 1: Configure PAM for Session Recording
 
-	1.	Open the PAM configuration for login shells:
-
+Open the PAM configuration for login shells:
+```
 sudo nano /etc/pam.d/sshd
+```
 
-
-	2.	Add the following line at the end of the file:
-
+Add the following line at the end of the file:
+```
 session    required    pam_tty_audit.so enable=* log_passwd=0
+```
 
+This setup enables tlog to capture terminal commands and output when users log in via SSH.
 
-	3.	This setup enables tlog to capture terminal commands and output when users log in via SSH.
-
-Option 2: Set tlog as the Default Shell
+### Option 2: Set tlog as the Default Shell
 
 	1.	Set tlog-rec-session as the default shell for users whose sessions you want to record:
 
@@ -70,38 +70,36 @@ sudo nano /etc/tlog/tlog.conf
 Step 4: Forward Logs to a Central Server (Optional)
 
 	1.	Edit /etc/rsyslog.conf to forward logs:
-
+```
 *.* @<CENTRAL_SERVER_IP>:514
-
+```
 
 	2.	Restart the rsyslog service:
-
+```
 sudo systemctl restart rsyslog
-
+```
 Step 5: Test the Setup
 
 	1.	Log in to the server as the monitored user.
 	2.	Run some commands.
 	3.	Check the logs:
 	•	If using systemd journal:
-
+```
 sudo journalctl -u tlog
-
+```
 
 	•	If using syslog:
-
+```
 cat /var/log/auth.log
-
+```
 Step 6: Secure Access to Logs
 
 Restrict access to logs to prevent unauthorized users from viewing sensitive data:
-
+```
 sudo chmod 600 /var/log/auth.log
 sudo chown root:root /var/log/auth.log
-
+```
 Optional Enhancements
 
 	•	Rotate Logs: Use logrotate to prevent excessive log growth.
 	•	Analyze Logs: Forward logs to a log analysis platform (e.g., Grafana + Loki or ELK Stack).
-
-Would you like assistance configuring centralized logging or integrating with a monitoring tool?
