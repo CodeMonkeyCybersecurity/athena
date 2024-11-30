@@ -1,3 +1,5 @@
+## About
+Athena is the Greek godess of wisdom and practical reasoning. Accordingly, we think this is a fitting name for the repository of our how-to files and knowledge base.
 
 ## Complaints, compliments, confusion and other communications:
 
