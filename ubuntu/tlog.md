@@ -38,24 +38,24 @@ This setup enables tlog to capture terminal commands and output when users log i
 
 ### Option 2: Set tlog as the Default Shell
 
-	1.	Set tlog-rec-session as the default shell for users whose sessions you want to record:
-
+Set tlog-rec-session as the default shell for users whose sessions you want to record:
+```
 sudo usermod --shell /usr/bin/tlog-rec-session <username>
+```
 
-
-	2.	Replace <username> with the specific user account you want to monitor.
-	3.	To verify, log in as the user and confirm that tlog is active. The session will be recorded.
+Replace <username> with the specific user account you want to monitor.
+To verify, log in as the user and confirm that tlog is active. The session will be recorded.
 
 Step 3: Configure Log Storage
 
 tlog logs to the systemd journal by default, but you can configure it to log via syslog for centralized logging.
-	1.	Open /etc/tlog/tlog.conf (create it if it doesn’t exist):
-
+Open /etc/tlog/tlog.conf (create it if it doesn’t exist):
+```
 sudo nano /etc/tlog/tlog.conf
+```
 
-
-	2.	Add the following configuration to forward logs to syslog:
-
+Add the following configuration to forward logs to syslog:
+```
 {
     "destination": "syslog",
     "syslog": {
@@ -63,35 +63,36 @@ sudo nano /etc/tlog/tlog.conf
         "level": "info"
     }
 }
+```
 
-
-	3.	Save and close the file.
+Save and close the file.
 
 Step 4: Forward Logs to a Central Server (Optional)
 
-	1.	Edit /etc/rsyslog.conf to forward logs:
+Edit /etc/rsyslog.conf to forward logs:
 ```
 *.* @<CENTRAL_SERVER_IP>:514
 ```
 
-	2.	Restart the rsyslog service:
+Restart the rsyslog service:
 ```
 sudo systemctl restart rsyslog
 ```
 Step 5: Test the Setup
 
-	1.	Log in to the server as the monitored user.
-	2.	Run some commands.
-	3.	Check the logs:
-	•	If using systemd journal:
+Log in to the server as the monitored user.
+Run some commands.
+Check the logs:
+If using systemd journal:
 ```
 sudo journalctl -u tlog
 ```
 
-	•	If using syslog:
+If using syslog:
 ```
 cat /var/log/auth.log
 ```
+
 Step 6: Secure Access to Logs
 
 Restrict access to logs to prevent unauthorized users from viewing sensitive data:
@@ -99,7 +100,6 @@ Restrict access to logs to prevent unauthorized users from viewing sensitive dat
 sudo chmod 600 /var/log/auth.log
 sudo chown root:root /var/log/auth.log
 ```
-Optional Enhancements
-
-	•	Rotate Logs: Use logrotate to prevent excessive log growth.
-	•	Analyze Logs: Forward logs to a log analysis platform (e.g., Grafana + Loki or ELK Stack).
+Optional Enhancements:
+Rotate Logs: Use logrotate to prevent excessive log growth.
+Analyze Logs: Forward logs to a log analysis platform (e.g., Grafana + Loki or ELK Stack).
