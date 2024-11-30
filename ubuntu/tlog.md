@@ -5,7 +5,7 @@ Here’s a step-by-step guide to set up tlog for capturing terminal commands and
 
 Step 1: Install tlog
 
-	1.	Install the tlog package:
+Install the tlog package:
 
 ```sudo apt update
 ```sudo apt install tlog
