@@ -1,7 +1,6 @@
 https://microk8s.io/docs/getting-started
 
 Skip to main content
-Jump to main content
 CanonicalMicroK8s
 Menu
 Search documentation
