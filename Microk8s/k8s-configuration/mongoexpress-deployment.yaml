@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: mongo-express 
   labels:
-  app: mongo-express
+    app: mongo-express
 spec:
   replicas: 1 
   selector:
@@ -18,7 +18,7 @@ spec:
       - name: mongo-express 
         image: mongo-express
         ports:
-        - containerPorts: 8081
+        - containerPort: 8081
         env:
         - name: ME_CONFIG_MONGODB_ADMINUSERNAME
           valueFrom:
