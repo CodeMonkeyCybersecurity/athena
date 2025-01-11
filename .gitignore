@@ -1,1 +1,8 @@
+# Other
+*.pem
+*.key
+*.env
+
+# MacOS
 .DS_Store
+desktop.ini
